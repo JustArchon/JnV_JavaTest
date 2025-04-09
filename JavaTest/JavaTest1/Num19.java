@@ -1,20 +1,29 @@
 package JavaTest1;
 
+import java.util.ArrayList;
 
 public class Num19 {
 	public static void main(String[] args) {
+		ArrayList myList = new ArrayList();
+		String[] myArray;
+		try {
+			while(true) {
+				myList.add("My string");
+			}
+		} catch (RuntimeException re) {
+			System.out.println("Caught a RuntimeException");
+		} catch (Exception e) {
+			System.out.println("Caught an Exception");
+		}
+		System.out.println("Ready yo use");
 	}
 }
 
 /*
-문제: Which two statements are true about the Java byte Code?(Choose two.)
-	 Java 바이트 코드에 옳은 설명을 고르시오
-선택한 오답: B)It can run on any platform that has a Java compiler.(모든 플랫폼이 자바 컴파일러로 돌릴수 있습니다.) , 
-		  E) It can run on any platform that has a Java Runtime Environment.(모든 플랫폼이 자바 런타임환경에서 돌릴수있습니다.)
-정답: A) It can be serialized across network.(네트워크에 직렬화 해서 전달할수 있습니다.), 
-	 E) It can run on any platform that has a Java Runtime Environment.(모든 플랫폼이 자바 런타임환경에서 돌릴수있습니다.)
+선택한 오답: B) Exception 예외처리 항목에서 포착되어서 콘솔에 예외처리 항목으로 처리된다.
+정답:  C) main에서 런타임에러가 발생한다.
+컴파일 결과: Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
 
-이유: 컴파일러로는 자바 바이트 코드를 돌릴수 없습니다. 또한 자바를 실행하기위해서는 JRE가 필요한것도 맞습니다.
-네트워크 직렬화같은 경우 직렬화하다 serialized는 직렬화 전송을 위해 byte화 하는 작업이라고 합니다.
-Java byte코드는 직렬화한 코드이므로 네트워크에 전송할수 있습니다.
+이유: while(true)를 통한 무한반복으로 list에 계속추가하다보면 메모리부족현상으로 오류가납니다.
+여기서 잘못알고있었던점은 outofmemoryerror는 예외가 아닌 에러이므로 Exception에 잡히지않습니다.
 */

@@ -1,20 +1,23 @@
 package JavaTest1;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Num16 {
 	public static void main(String[] args) {
+		LocalDateTime dt = LocalDateTime.of(2024, 1, 19, 1, 1);
+		dt.plusDays(30);
+		dt.plusMonths(1);
+		System.out.println(dt.format(DateTimeFormatter.ISO_DATE_TIME));
 	}
 }
 
 /*
-문제: Which two statements are true about the Java byte Code?(Choose two.)
-	 Java 바이트 코드에 옳은 설명을 고르시오
-선택한 오답: B)It can run on any platform that has a Java compiler.(모든 플랫폼이 자바 컴파일러로 돌릴수 있습니다.) , 
-		  E) It can run on any platform that has a Java Runtime Environment.(모든 플랫폼이 자바 런타임환경에서 돌릴수있습니다.)
-정답: A) It can be serialized across network.(네트워크에 직렬화 해서 전달할수 있습니다.), 
-	 E) It can run on any platform that has a Java Runtime Environment.(모든 플랫폼이 자바 런타임환경에서 돌릴수있습니다.)
+선택한 오답: C) 2024-03-20T01:01:00
+정답: B) 2024-01-19T01:01:00
+컴파일 결과: 2024-01-19T01:01:00
 
-이유: 컴파일러로는 자바 바이트 코드를 돌릴수 없습니다. 또한 자바를 실행하기위해서는 JRE가 필요한것도 맞습니다.
-네트워크 직렬화같은 경우 직렬화하다 serialized는 직렬화 전송을 위해 byte화 하는 작업이라고 합니다.
-Java byte코드는 직렬화한 코드이므로 네트워크에 전송할수 있습니다.
+이유: LocalDateTime 객체는 불변입니다. dt.plusdays 등을 하는것은 값을 변경한 객체를 반환해주며
+이를 dt = dt.plusDays 처럼 재 대입을 하지 않는 이상, 기존의 값을 수정되지 않습니다.
+그래서 B)가 정답입니다.
 */
