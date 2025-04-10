@@ -1,18 +1,19 @@
 package JavaTest1;
 
-public class Num28 {
-	
+public class Num28 { // 원 문제는 Greeting
+	public static void main(String[] args) {
+		System.out.println("Hello " + args[0]);
+	}
 }
 
 /*
+문제 : Which set of commands prints Hello Duke in the console?
+선택한 오답: D) javac Greeting.java
+			 java Greeting.class Duke
+정답: C) javac Greeting.java
+	    java Greeting Duke
 
-Array<Cycle> myList = new ArrayList<>();
-myList.add(new MotorCycle());
-
-선택한 오답: A)모터사이클은 사이클을 구현하는 인터페이스이다. , F)모터사이클은 사이클의 상위클래스다
-정답: B) 사이클은 모터사이클을 구현하는 인터페이스이다. C) 사이클은 모터사이클의 추상화적 상위클래스다.
-
-이유: Cycle의 Array리스트에 add가 되려면 MotorCycle이 Cycle을 상속받아야합니다. 그러므로
-MotorCycle이 Cycle을 받는 B,C가 맞습니다.
-[정확히는 영어를 반대로 읽은 영어 독해 이슈]
+이유: args는 명령행 인자입니다. 그러므로 자바 실행시 첫번째 실행 인자를 가져와서 표시한다는 의미이며
+오답의 이유는 java를 컴파일후 실행시에는 class를 붙이지않고
+java Greeting으로 실행합니다. 이점을 유의할 필요가 있다고 생각합니다.
 */

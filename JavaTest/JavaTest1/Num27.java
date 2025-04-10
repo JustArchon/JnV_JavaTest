@@ -1,18 +1,25 @@
 package JavaTest1;
 
 public class Num27 {
-	
+	public static void main(String[] args) {
+		int iVar = 100;
+		float fVar = 100.100f;
+		double dVar = 123;
+		fVar = iVar; // 7
+		iVar = fVar; // 8
+		fVar = dVar; // 9
+		dVar = fVar; // 10
+		iVar = dVar; // 11
+		dVar = iVar; // 12
+	}
 }
 
 /*
+문제: 컴파일에 실패한 라인을 고르시오
+선택한 오답: A)7Line, B)8Line, C)9Line
+정답: B)8 , C) 9, E) 11
 
-Array<Cycle> myList = new ArrayList<>();
-myList.add(new MotorCycle());
-
-선택한 오답: A)모터사이클은 사이클을 구현하는 인터페이스이다. , F)모터사이클은 사이클의 상위클래스다
-정답: B) 사이클은 모터사이클을 구현하는 인터페이스이다. C) 사이클은 모터사이클의 추상화적 상위클래스다.
-
-이유: Cycle의 Array리스트에 add가 되려면 MotorCycle이 Cycle을 상속받아야합니다. 그러므로
-MotorCycle이 Cycle을 받는 B,C가 맞습니다.
-[정확히는 영어를 반대로 읽은 영어 독해 이슈]
+이유: double > float > int 방식으로 삽입이 가능하다는 점에서
+역순으로 대입을 시도하는 부분을 고르는게 정답이었습니다.
+그러므로 i <- f, f <- d, i <- d가 정답입니다. 
 */

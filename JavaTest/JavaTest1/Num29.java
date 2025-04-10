@@ -1,18 +1,28 @@
 package JavaTest1;
 
 public class Num29 {
-	
+	Character c;
+	boolean b;
+	float f;
+	void printAll() {
+		System.out.println("c = " + c);
+		System.out.println("b = " + b);
+		System.out.println("f = " + f);
+	}
+	public static void main(String[] args) {
+		Num29 f = new Num29();
+		f.printAll();
+	}
 }
 
 /*
+선택한 오답: A) c = null
+			 b = true
+			 f = 0.0
+정답: C) c = null
+		b = false
+		f = 0.0
 
-Array<Cycle> myList = new ArrayList<>();
-myList.add(new MotorCycle());
-
-선택한 오답: A)모터사이클은 사이클을 구현하는 인터페이스이다. , F)모터사이클은 사이클의 상위클래스다
-정답: B) 사이클은 모터사이클을 구현하는 인터페이스이다. C) 사이클은 모터사이클의 추상화적 상위클래스다.
-
-이유: Cycle의 Array리스트에 add가 되려면 MotorCycle이 Cycle을 상속받아야합니다. 그러므로
-MotorCycle이 Cycle을 받는 B,C가 맞습니다.
-[정확히는 영어를 반대로 읽은 영어 독해 이슈]
+이유: boolean을 초기화 하지않은 초기값은 'false'라고합니다. 그러므로 C가 정답입니다.
+숫자는 0, 문자는 '\0', 참조타입(String, 래퍼 클래스(Integer, Character ...)) = null
 */

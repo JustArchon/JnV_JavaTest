@@ -1,18 +1,32 @@
 package JavaTest1;
 
 public class Num26 {
-	
+	void readCard(int cardNo) throws Exception {
+		System.out.println("Reading card");
+	}
+	void checkCard(int cardNo) throws RuntimeException {	// line n1
+		System.out.println("Checking card");
+	}
+	public static void main(String[] args) {
+		Num26 ex = new Num26();
+		int cardNo = 12345;
+		ex.readCard(cardNo);								// line n2
+		ex.checkCard(cardNo);;								// line n3
+	}
 }
 
 /*
 
-Array<Cycle> myList = new ArrayList<>();
-myList.add(new MotorCycle());
-
-선택한 오답: A)모터사이클은 사이클을 구현하는 인터페이스이다. , F)모터사이클은 사이클의 상위클래스다
-정답: B) 사이클은 모터사이클을 구현하는 인터페이스이다. C) 사이클은 모터사이클의 추상화적 상위클래스다.
-
-이유: Cycle의 Array리스트에 add가 되려면 MotorCycle이 Cycle을 상속받아야합니다. 그러므로
-MotorCycle이 Cycle을 받는 B,C가 맞습니다.
-[정확히는 영어를 반대로 읽은 영어 독해 이슈]
+선택한 오답: A) Reading card
+		  B) Checking card
+정답: C) Compilation fails only line n2
+이유: 우선, 메소드에 throws를 걸면 이 안에서 그 오류가 부모로 던져질수있다 라는 점을 의미합니다.
+그러므로 main에서도 Exception이 발생하면 자신도 상위 Exception으로 throws를 해야한다라는 점을
+명시해야하는데 그렇지 않았기에 readcard에서 컴파일 오류가 나는거라고 알수있습니다.
+checkcard는 뜨지않는데, 그 이유는 Exception중에서도
+RuntimeException은 미체크 예외라는 예외를 반드시처리하지않아도 되는 특수한 경우라서그렇습니다.
+NullPointerException, ArithmeticException
+이것도 RuntimeException의 종류이고,
+주로 미체크 예외는 프로그래머의 실수, null 배열인덱스 초과
+체크 예외는 파일, 데이터베이스 오류 등 물리적인 오류라고 설명할수있습니다.
 */

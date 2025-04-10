@@ -1,18 +1,24 @@
 package JavaTest1;
 
 public class Num24 {
-	
+	public static void main(String[] args) {
+		try {
+			int num = 10;
+			int div = 0;
+			int ans = num / div;
+		} catch (ArithmeticException e) {
+			ans = 0;						// n1
+		} catch (Exception e) {
+			System.out.println("Invalid calculation");
+		}
+		System.out.println("Answer = " + ans);	// n2
+	}
 }
 
 /*
+선택한 오답: A) Answer = 0
+정답: E) Compilation fails at line n1 and line n2.
 
-Array<Cycle> myList = new ArrayList<>();
-myList.add(new MotorCycle());
-
-선택한 오답: A)모터사이클은 사이클을 구현하는 인터페이스이다. , F)모터사이클은 사이클의 상위클래스다
-정답: B) 사이클은 모터사이클을 구현하는 인터페이스이다. C) 사이클은 모터사이클의 추상화적 상위클래스다.
-
-이유: Cycle의 Array리스트에 add가 되려면 MotorCycle이 Cycle을 상속받아야합니다. 그러므로
-MotorCycle이 Cycle을 받는 B,C가 맞습니다.
-[정확히는 영어를 반대로 읽은 영어 독해 이슈]
+이유: ans 변수가 try 블록 내에 있었기 때문에 try 바깥블록으로 나가는 순간 int ans는 없는
+항목이 됩니다. 그러므로 n1,n2 구역 전부 컴파일 에러가 정답입니다.
 */
