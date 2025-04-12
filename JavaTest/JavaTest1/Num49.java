@@ -1,25 +1,24 @@
-Num27.javaNum27.javapackage JavaTest1;
+package JavaTest1;
 
-public class Num32 {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Num49 {
 	public static void main(String[] args) {
-		int iVar = 100;
-		float fVar = 100.100f;
-		double dVar = 123;
-		fVar = iVar; // 7
-		iVar = fVar; // 8
-		fVar = dVar; // 9
-		dVar = fVar; // 10
-		iVar = dVar; // 11
-		dVar = Num49; // 12
+		List<String> arrayList = new ArrayList<>();
+		arrayList.add("Tech");
+		arrayList.add("Expert");
+		arrayList.set(0, "Java");
+		arrayList.forEach(a -> a.concat("Forum"));
+		arrayList.replaceAll(s -> s.concat("Group"));
+		System.out.println(arrayList);
 	}
 }
 
 /*
-문제: 컴파일에 실패한 라인을 고르시오
-선택한 오답: A)7Line, B)8Line, C)9Line
-정답: B)8 , C) 9, E) 11
+선택한 오답: C) [JavaForumGroup, ExpertForumGroup]
+정답: B) [JavaGroup, ExpertGroup]
 
-이유: double > float > int 방식으로 삽입이 가능하다는 점에서
-역순으로 대입을 시도하는 부분을 고르는게 정답이었습니다.
-그러므로 i <- f, f <- d, i <- d가 정답입니다. 
+이유: forEach의 경우는 순회만 할뿐 객체의 내용을 수정하지 않습니다.
+그러므로 Forum을 concat한 것은 적용되지 않습니다.
 */

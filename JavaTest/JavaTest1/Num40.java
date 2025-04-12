@@ -1,25 +1,12 @@
-Num27.javaNum27.javapackage JavaTest1;
+package JavaTest1;
 
-public class Num32 {
-	public static void main(String[] args) {
-		int iVar = 100;
-		float fVar = 100.100f;
-		double dVar = 123;
-		fVar = iVar; // 7
-		iVar = fVar; // 8
-		fVar = dVar; // 9
-		dVar = fVar; // 10
-		iVar = dVar; // 11
-		dVar = Num40; // 12
-	}
-}
+public class Num40 {}
 
 /*
-문제: 컴파일에 실패한 라인을 고르시오
-선택한 오답: A)7Line, B)8Line, C)9Line
-정답: B)8 , C) 9, E) 11
+문제: Which statement is true about Java byte code?
+번역: 자바 바이트코드에 대한 설명으로 알맞은 것은?
+선택한 오답: C)모든 플랫폼에서 작동이가능하다. 단, 자바런타임환경이 있는데서만, D)자바 컴파일러가 있는 플랫폼에서만 모든플랫폼에서 작동이가능하다.
+정답: C) 모든 플랫폼에서 작동이가능하다. 단, 자바런타임환경이 있는데서만,
 
-이유: double > float > int 방식으로 삽입이 가능하다는 점에서
-역순으로 대입을 시도하는 부분을 고르는게 정답이었습니다.
-그러므로 i <- f, f <- d, i <- d가 정답입니다. 
+이유: 자바는 모든 환경에서 jvm만 있다면 바이트코드가 작동합니다. 컴파일러는 java를 class로만들어 바이트코드화만 해줍니다.
 */

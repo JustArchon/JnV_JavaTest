@@ -1,25 +1,26 @@
-Num27.javaNum27.javapackage JavaTest1;
+package JavaTest1;
 
-public class Num32 {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Num41 {
 	public static void main(String[] args) {
-		int iVar = 100;
-		float fVar = 100.100f;
-		double dVar = 123;
-		fVar = iVar; // 7
-		iVar = fVar; // 8
-		fVar = dVar; // 9
-		dVar = fVar; // 10
-		iVar = dVar; // 11
-		dVar = Num41; // 12
+		String[] arr = { "Hi", "How", "Are", "You" };
+		List<String> arrList = new ArrayList<>(Arrays.asList(arr));
+		if (arrList.removeIf(s -> {System.out.println(s); return s.length() <= 2;})) {
+			System.out.println(" removed.");
+		}
 	}
 }
 
 /*
-문제: 컴파일에 실패한 라인을 고르시오
-선택한 오답: A)7Line, B)8Line, C)9Line
-정답: B)8 , C) 9, E) 11
+선택한 오답: A) 컴파일 실패
+정답: C) HiHowAreYou removed
 
-이유: double > float > int 방식으로 삽입이 가능하다는 점에서
-역순으로 대입을 시도하는 부분을 고르는게 정답이었습니다.
-그러므로 i <- f, f <- d, i <- d가 정답입니다. 
+이유: {System.out.println(s);
+	  return s.length() <= 2;}
+	람다에 적혀진 코드를 추적해보면 우선적으로 배열내의 내용을 전부 출력하게되어있습니다. 그리고 제거 프로세스의경우는
+	return에서만 판단합니다 이과정에서 Hi가 삭제되었고 true를 반환하게됩니다.
+	그래서 removed 프린트가 호출되었으며 hihowareyou를 전부출력후 hi를 최종적으로는 삭제햇기때문에 removed가 추가되어 표시됩니다.
 */

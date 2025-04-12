@@ -1,25 +1,33 @@
-Num27.javaNum27.javapackage JavaTest1;
+package JavaTest1;
 
-public class Num32 {
+class Product{
+	double price;
+}
+
+public class Num39 {
+	public void updatePrice(Product product, double price) {
+		price = price * 2;
+		product.price = product.price + price;
+	}
 	public static void main(String[] args) {
-		int iVar = 100;
-		float fVar = 100.100f;
-		double dVar = 123;
-		fVar = iVar; // 7
-		iVar = fVar; // 8
-		fVar = dVar; // 9
-		dVar = fVar; // 10
-		iVar = dVar; // 11
-		dVar = Num39; // 12
+		Product product = new Product();
+		product.price = 200;
+		double newPrice = 100;
+		
+		Num39 t = new Num39();
+		t.updatePrice(product, newPrice);
+		System.out.println(product.price + " : " + newPrice);
 	}
 }
 
 /*
-문제: 컴파일에 실패한 라인을 고르시오
-선택한 오답: A)7Line, B)8Line, C)9Line
-정답: B)8 , C) 9, E) 11
+선택한 오답: B) 400.0 : 200.0
+정답: C) 400.0 : 100.0
 
-이유: double > float > int 방식으로 삽입이 가능하다는 점에서
-역순으로 대입을 시도하는 부분을 고르는게 정답이었습니다.
-그러므로 i <- f, f <- d, i <- d가 정답입니다. 
+이유: public void updatePrice(Product product, double price)에서
+t.updatePrice(product, newPrice);를 통해서
+double newPrice = 100;를 변수에 넣습니다.
+하지만 자바 객체 생성시, 넣은 변수는 주소를 넣는게 아닌, 복사를 통해서 생성하기때문에
+기존의 변수는 영향이 없습니다.
+그러므로 C가 정답입니다.
 */
