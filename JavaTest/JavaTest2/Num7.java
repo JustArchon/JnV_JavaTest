@@ -1,22 +1,31 @@
 package JavaTest2;
 
+import java.io.IOException;
+
+class A {
+	public void a() {}
+	int a;
+}
+
+class B {
+	protected int doSuff() {
+		private int a = 100;
+		return a++;
+	}
+}
 
 public class Num7 {
-	public static void main(String[] args) {
-		float var1 = (12_345.01 >= 121_35.00) ? 12_456 : 124_56.02f;
-		float var2 = var1 + 1024;
-		System.out.println(var2);
+	public static void main(String fileName) throws IOException {
+		
 	}
 }
 
 /*
-선택한 오답: B) 컴파일 오류
-정답: C) 13480.0
-컴파일결과 : 13480.0
+선택한 오답: D) B.java 파일만 컴파일에 실패한다.
+정답: A) A파일만 컴파일에 성공한다.
+컴파일결과 : B class 오류
 
-이유: JAVA는 ,대신 _를 자리구분자로 쓸 수 있다고 합니다.
-또한, 틀린이유로는 컴파일 오류를 고른 이유가 float로 대입할때 무조건 자리수 끝에 'f'를 붙여야 한다고
-인지했지만, 이는 f라는 자체가 float라는걸 명시하는 문자이며, 소숫점이 있는 숫자에서 double화가 가능성이있는 숫자를
-float라고 강제로 명시해주는 문자라고합니다.
-int의 경우 float가 더 크기때문에 f를 명시가 필수가 아니므로 정상적으로 계산이된다고합니다.
+이유: 지역변수는 접근 제한자를 사용할수 없다고합니다. private int가 불가능하다고 설명 할 수 있습니다.
+main메소드의 경우는 컴파일은 되지만 main의 진입점이 작동되지않으므로 A만 정상적으로 사용 할 수 있기에 정답이 A인거라고 설명할수있을것 같습니다.
+단 메소드하고 변수하고 이름을 같이쓰는건 좋은습관은 아니라고 합니다.
 */
