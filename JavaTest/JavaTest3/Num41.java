@@ -1,17 +1,33 @@
 package JavaTest3;
 
+import java.util.ArrayList;
+
+class Employee {
+	String office;
+}
+
 public class Num41 {
 	public static void main(String[] args) {
-		
+		var employee = new ArrayList<Employee>();
+		public var display() {
+			var employee = new Employee();
+			var offices = new ArrayList<>();
+			offices.add("Cicago");
+			offices.add("Bangalore");
+			for (var office : offices) {
+				System.out.println("Employee Location " + office);
+			}
+		}
 	}
 }
 
 /*
 
-선택한 오답: D) javac fails to compile the class and prints the error message Error:Could not find or load main class MyCar.class
-자바c에서 컴파일 에러메시지가 뜬다. 에러: MyCar.class라는 메인 클래스를 찾거나 로드할 수 없습니다.
-정답: B) javac 컴파일이 성공한다. 에러나 경고없이
+선택한 오답: C) line 6, D) line 5
+정답: D) line 5, E) line 4
 
-이유: 오답으로 선택한 사항은 컴파일 후, java를 통해서 class를 실행했을때 발생하는 오류입니다.
-실제로 컴파일에서는 문제가 없다고합니다.
+이유: 리턴 타입을 명시하는 구간에서는 var를 사용할수 없습니다. var는 지역변수에서만 사용할수있습니다.
+그리고 var employee = new ArrayList<Employee>(); 가 틀린점은
+메서드 내에서 메서드를 새로 정의 할수 없다고합니다. 그러므로 public var display() 자체를 바깥으로 빼서 정의한후
+main 메서드 내에서는 정의한 메서드를 실행만 가능하다고 합니다.
 */
