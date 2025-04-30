@@ -1,23 +1,27 @@
 package JavaTest4;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Num5 {
 	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
+		List<String> list1 = new ArrayList<>();
+		list1.add("A");
+		list1.add("B");
+		List<String> list2 = Collections.unmodifiableList(list1);
+		list1.add("C");
+		System.out.println(list1);
+		System.out.println(list2);
 	}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+선택한 오답: D) 라인11에 런타임 예외가 발생한다.
+정답: C) ["A","B","C"]
+		["A","B","C"]
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+이유: Collections.unmodifiableList(list1)은 읽기전용 리스트를 전달해주는 역할을 한다고합니다.
+그래서 list1에 ["A","B","C"]가 전달되며
+이는 list2에도 반영되며 두개다 똑같은 유형의 리스트를 띄우게됩니다.
 */

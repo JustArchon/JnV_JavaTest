@@ -1,23 +1,31 @@
 package JavaTest4;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 public class Num3 {
 	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
+		for (int i = 0; i < args.length; i++ ) {
+			System.out.println(i + "). " + args[i]);
+			switch (args[i]){
+				case "one":
+					continue;
+				case "two":
+					i--;
+					continue;
+				default:
+					break;
+			}
+		}
 	}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+java Min one two three
+선택한 오답: C) 컴파일에러
+정답: B) 0). one
+	    1). two
+	    ...
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+이유: for의 동작 방식은 int i = 0으로 i를 선언 후, 조건 검사 후 모든 작업을 진행 후에,
+i++를 하고 조건 검사후 다시 진행이 된다고 합니다.
+이 문제에서는 i = 1이되면서 two case에서 i--가진행되고 continue 진행 후, 바로 i++가 진행 되면서
+0 -> 1 -> 0 -> 1로 다시 루프를 돌면서 1) two가 계속해서 뜨게됩니다.
 */

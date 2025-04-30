@@ -15,7 +15,7 @@ public class Num22 {
 	public static void main(String[] args) {
 		Num22 p1 = new Num22("1.99");
 		Num22 p2 = new Num22(2.99);
-		Num22 p3 = new Price();
+		Num22 p3 = new Num22();
 		System.out.println(p1.getValue() + "," + p2.getValue() + "," + p3.getValue());
 		
 	}
