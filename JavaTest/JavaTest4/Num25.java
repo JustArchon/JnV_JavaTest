@@ -1,23 +1,24 @@
 package JavaTest4;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+public class MyPersistenceData{
+	String str;
+	private void methodA() {
+		System.out.println("methodA");
+	}
+}
 
 public class Num25 {
 	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
+		
 	}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+문제: You want to implement java.io.Serializable interface to the MyPersistenceData class. Which method should be overriden?
+당신은 MyPersistenceData 클래스를 java.io.Serializable 인터페이스를 구현하도록 만들고 싶습니다. 어떤 메서드를 반드시 오버라이드해야 하나요?
+선택한 오답: C) the readExternal method and writeEnternal method
+정답: B) nothing
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+이유: 오답으로 고른 readExternal, writeEnternal 메소드는 Serializable이 아닌 Externalizable에 속한 메소드이며,
+Serializable은 아무것도 정의되지않은 마커 인터페이스 이며, 이때는 아무것도 정의할필요가없습니다.
 */

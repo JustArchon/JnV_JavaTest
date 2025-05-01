@@ -1,23 +1,33 @@
 package JavaTest4;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+public interface TestInterface {
+	default void sampleingProbeProcedure() {
+		probeProcedure();
+		System.out.println("Collect Sample");
+		System.out.println("Leave Asteroid");
+		System.out.println("Dock with Main Craft");
+	}
+	default void explosionProbeProcedure() {
+		probeProcedure();
+		System.out.println("Explode");
+	}
+}
 
 public class Num17 {
 	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
 	}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+	Examine these requirements:
+		Eliminate code duplication.
+		코드 중복을 제거해야 한다
+		Keep constant the number of methods other classes may implement from this interface
+		다른 클래스들이 이 인터페이스에서 구현해야 하는 메서드 수는 유지해야 한다.
+		Which method can be added to meet these requirements?
+선택한 오답: B) static void probeProcedure()
+정답: D) default void probeProcedure()
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+이유: 다른 클래스들이 이 인터페이스에서 구현해야 하는 메서드 수는 유지해야 한다. 라는 점에서 오답으로 선택한 static은 재정의가 불가합니다.
+그에따라서 다른 메소드와 같은 default void probeProcedure를 정의해야합니다.
 */

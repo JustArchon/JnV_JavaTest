@@ -1,23 +1,23 @@
 package JavaTest4;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+public class MyResource{
+	public MyResource() {
+	}
+	// resource methods
+}
 
 public class Num27 {
 	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
 	}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+문제: You want to use the MyResource class in a try-with-resources statement. Which change will accomplish this?
+MyResource 클래스를 try-with-resources 구문 안에서 사용하고 싶습니다. 이를 달성하려면 어떤 변경을 해야 합니까?
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+선택한 오답: B) Implement AutoCloseable and override the autoClose method.
+정답: D) Implement AutoCloseable and override the close method.
+
+이유: 리소스를 안에서 자동으로 닫으려면 AutoCloseable를 상속해야 한다고합니다. 그리고 그 안에는 close() 메소드가 정의되어있으며
+이를 재정의해야한다고합니다.
 */

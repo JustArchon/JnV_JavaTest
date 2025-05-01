@@ -1,23 +1,20 @@
 package JavaTest4;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.List;
 
 public class Num16 {
 	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
+		var fruits = List.of("apple","orange","banana","lemon");
 	}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+You want to examine the first element that contains the character n. Which statement will accomplish this?
+"문자 n을 포함하는 첫 번째 요소를 검사하고 싶습니다. 어떤 명령문(Statement)이 이를 수행할 수 있을까요?"
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+선택한 오답: B) fruits.stream().filter(f -> f.contains("n")).forEachOrdered(System.out::print);
+정답: C) Optional<String> result = fruits.stream().filter(f->f.contains("n")).findFirst();
+
+이유: 문제는 n을 포함하는 첫 번째 요소만을 검사한다고 했습니다. 오답의 경우는 forEachOrdered를 하므로 전체를 검사합니다.
+C의 경우는 findFirst를 통해서 첫 번째 요소만을 검사하므로 C가 정답입니다.
 */

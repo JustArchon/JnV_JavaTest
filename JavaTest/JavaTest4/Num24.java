@@ -3,15 +3,23 @@ package JavaTest4;
 public class Num24 {}
 
 /*
-문제: Which two statements are valid to be written in this interface? (Choose two.)
-	 다음중 인터페이스 내에 작성할 수 있는 유효한 코드는?
+문제: Which two statements independently compile?
+서로 독립적으로 컴파일이 가능한 두 문장은 무엇인가?
 
+A) List<? super Short> list = new ArrayList<Number>();
+B) List<? super Number> list = new ArrayList<Integer>();
+C) List<? extends Number> list = new ArrayList<Byte>();
+D) List<? extends Number> list = new ArrayList<Object>();
+E) List<? super Float> list = new ArrayList<Double>();
 
-선택한 오답: D) public String methodD();
-	 	  E) public int x;
-정답: A) public abstract void methodB();
-	 D) public String methodD();
+선택한 오답: B) List<? super Number> list = new ArrayList<Integer>();
+		  D) List<? extends Number> list = new ArrayList<Object>();
+정답: A) List<? super Short> list = new ArrayList<Number>();
+	 C) List<? extends Number> list = new ArrayList<Byte>();
 
-이유: interface에서 변수 선언시 static final로 적용된다합니다. 적을수 있지만 반드시 초기화를 해야한다고합니다.
+이유: A)가 정답인 이유는 Short의 상위타입을 상속한 리스트입니다. 그에따라서 상위타입인 Number는 들어갈수있습니다.
+C) 또한 Number를 상속받았기에, Byte는 Number의 하위 타입이므로, A,C가 정답입니다.
+
+Object > Number > Byte, Short, Integer, Long, Float, Double
 
 */

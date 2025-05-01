@@ -1,23 +1,30 @@
-Num3.javapackage JavaTest4;
+package JavaTest4;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+module java.se {
+	requires transitive java.sql
 
+}
 public class Num23 {
-	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
-	}
+	public static void main(String[] args) {}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+문제: What does the ransitive modifier mean?
+transitive 수정자가 의미하는 것은 무엇인가?
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+A) Only a module that requires the java.se module is permitted to require the java.sql module.
+java.se 모듈을 요구하는 모듈만 java.sql 모듈을 요구할 수 있다.
+B) Any module that requires the java.se module does not need to require the java.sql module.
+java.se 모듈을 요구하는 모듈은 java.sql 모듈을 별도로 요구할 필요가 없다.
+C) Any module that attempts to require the java.se module actually requires the java.sql module instead.
+java.se 모듈을 요구하려는 모든 모듈은 실제로 java.sql 모듈을 요구하게 된다.
+D) Any module that requires the java.sql module does not need to require the java.se module.
+java.sql 모듈을 요구하는 모듈은 java.se 모듈을 별도로 요구할 필요가 없다.
+
+선택한 오답: A) Only a module that requires the java.se module is permitted to require the java.sql module.
+정답: B) Any module that requires the java.se module does not need to require the java.sql module.
+
+이유: transitive 키워드의 의미는 어떤 모듈이 이 모듈(java.se)을 requires 하면, 이 모듈(java.se)이 requires 하는 모듈(java.sql)도 자동으로 requires 한 것으로 처리된다.
+라고 합니다.
+즉, sql을 자동으로 requires를 하므로 B)인 sql모듈을 별도로 요구할 필요가 없다가 정답입니다.
 */

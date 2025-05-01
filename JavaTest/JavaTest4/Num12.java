@@ -1,23 +1,26 @@
 package JavaTest4;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Num12 {
+	public static void checkConfiguration(String fileName) {
+		File file = new File(fileName);
+		if(!file.exists()) {
+			throw new Error("Fatal error: Cconfiguration file, " + fileName + ", is missing.");
+		}
+	}
 	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
+		checkConfiguration("App.config");
+		System.out.println("Configuration is OK");
 	}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+선택한 오답: B) 컴파일 오류
+정답: C) main에서 예외발생, "Fatal error: Cconfiguration file App.config, is missing."
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+이유: Error는 미체크 예외에 해당하며, throw를 안해도 괜찮다고합니다.
 */

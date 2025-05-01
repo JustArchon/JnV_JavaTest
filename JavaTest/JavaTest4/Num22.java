@@ -1,23 +1,25 @@
 package JavaTest4;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Num22 {
-	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
+	public static void main(String[] args) throws IOException {
+		Path currentFile = Paths.get("/scratch/exam/temp.txt");
+		Path outputFile = Paths.get("scratch/exam/new.txt");
+		Path directory = Paths.get("/scratch/");
+		Files.copy(currentFile, outputFile);
+		Files.copy(outputFile,  directory);
+		Files.delete(outputFile);
 	}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+문제: exam/temp.txt는 존재한다. 하지만 exam/new.txt, scratch/new.txt는 존재하지않는다. 결과는?
+선택한 오답: B) 프로그램에서 filealreadyExsistsException 예외가발생한다.
+정답: C) 프로그램에서 NoSuchFfileException 예외가 발생한다.
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+이유: filealreadyExsistsException은 대상에 이미 파일이 있을때 발생하는 예외라고합니다. 삭제시 파일이 없으므로 NoSuchFfileException이 발생하는것이 맞습니다.
 */
