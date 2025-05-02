@@ -3,15 +3,19 @@ package JavaTest4;
 public class Num30 {}
 
 /*
-문제: Which two statements are valid to be written in this interface? (Choose two.)
-	 다음중 인터페이스 내에 작성할 수 있는 유효한 코드는?
+문제: Which code fragment compiles?
 
+선택한 오답: C) Comparator<> comparator = new Comparator<Integer> () {
+			 public int compare(Integer i, Integer j) {
+			 	return i.compareTo(j);
+			 }
+		};
+정답: D) Comparator<Integer> comparator = new Comparator<> () {
+			 public int compare(Integer i, Integer j) {
+			 	return i.compareTo(j);
+			 }
+		};
 
-선택한 오답: D) public String methodD();
-	 	  E) public int x;
-정답: A) public abstract void methodB();
-	 D) public String methodD();
-
-이유: interface에서 변수 선언시 static final로 적용된다합니다. 적을수 있지만 반드시 초기화를 해야한다고합니다.
+이유: 선언부에 제너릭 타입을 쓰고, 생성자에는 생략 할 수있었지만, 이를 반대로 썻기때문에 D가 정답입니다.
 
 */

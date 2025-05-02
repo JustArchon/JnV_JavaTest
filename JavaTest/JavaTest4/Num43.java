@@ -3,15 +3,19 @@ package JavaTest4;
 public class Num43 {}
 
 /*
-문제: Which two statements are valid to be written in this interface? (Choose two.)
-	 다음중 인터페이스 내에 작성할 수 있는 유효한 코드는?
+문제: Which tow modules include APIs in the Java SE Specification?
+	 Java SE 스펙(Java SE Specification)에 포함된 API를 제공하는 두 개의 모듈은 무엇인가?
+A) java.logging
+B) java.desktop
+C) javafx
+D) jdk.httpserver
+E) jdk.jartool
 
+선택한 오답: A) java.logging
+		  B) java.desktop
+정답: A) java.logging
+	 E) jdk.jartool
 
-선택한 오답: D) public String methodD();
-	 	  E) public int x;
-정답: A) public abstract void methodB();
-	 D) public String methodD();
-
-이유: interface에서 변수 선언시 static final로 적용된다합니다. 적을수 있지만 반드시 초기화를 해야한다고합니다.
-
+이유: java SE에서 제공하는 모듈은 java.으로 시작합니다. 그래서 A,B가 정답입니다.
+javafx는 자바 기반으로 데스크톱 애플리케이션(또는 리치 클라이언트 프로그램)을 만들기 위한 GUI 프레임워크 라고합니다.
 */

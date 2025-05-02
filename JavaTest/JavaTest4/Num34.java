@@ -1,23 +1,31 @@
 package JavaTest4;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Num34 {
 	public static void main(String[] args) {
-		Path source = Paths.get("/repo/a/a.txt");
-		Path destination = Paths.get("/repo");
-		Files.move(source,  destination); // line 1
-		Files.delete(source);			  // line 2
+		try (BufferedReader in = new BufferedReader(
+				new InputStreamReader(System.in))) {
+			System.out.println("Input: ");
+			String input = in.readLine();
+			System.out.println("Echo: " + input);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
 
 /*
-선택한 오답: B) A.java nio.file.NoSuchFileException is thrown on line2
-정답: A) A java.nio.file.FileAlreadyExistsException is thrown on line 1.
+java Num34 HelloWorld
+의 결과는?
+선택한 오답: B) Input: HelloWorld
+			 Echo: HelloWorld
+정답: C) Input: 
+		Then block until any input comes from System.in
+		그리고 System.in에서 입력이 올 때까지 대기(block) 한다
 
-이유: Files.move(source,  destination) 단계에서 파일을 이동시킵니다. 하지만
-/repo/a/a.txt -> /repo/a.txt로 이동되면서 source에 연결된 변수가 더이상 파일이 없어지면서
-NoSuchFileException 예외가 발생합니다.
+이유: 코드 실행 과정에서 System.in을 받는데 이거는 args의 입력을 받는 것이 아닌, 키보드를 통해서 받은 데이터를 받는 것이며,
+Input : 까지 표시 후, System.in의 입력을 받는 상태가 맞습니다.
 */
