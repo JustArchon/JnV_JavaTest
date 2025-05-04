@@ -19,7 +19,7 @@ E) If a package is defined in both the named module and the unnamed module, then
 선택한 오답: A) Modular jars loaded from --module-path are automatic modules.
 	 	  D) Modular jars loaded from -classpath are automatic modules.
 정답: A) Modular jars loaded from --module-path are automatic modules.
-	 D) Classes found in -classpath are part of an unnamed module.
+	 C) Classes found in -classpath are part of an unnamed module.
 
 이유: module-info.class가 없는 jar파일을 모듈 경로에 두면 JVM이 자동 모듈로 변환시킨다합니다.
 -classpath의 모든 클래스는 이름없는 모듈에 속하며 모듈 이름없이 JVM이 관리한다합니다.
