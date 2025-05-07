@@ -1,9 +1,6 @@
 package JavaTest4;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Num12 {
 	public static void checkConfiguration(String fileName) {
