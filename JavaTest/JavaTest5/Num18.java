@@ -1,18 +1,26 @@
 package JavaTest5;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Num18 {
 	public static void main(String[] args) {
-		
+		Path path1 = Paths.get("/app/./sys/");
+		Path res1 = path1.resolve("log");
+		Path path2 = Paths.get("server/exe");
+		Path res2 = path2.resolve("/readme/");
+		System.out.println(res1);
+		System.out.println(res2);
 	}
 }
 
 /*
-You want to examine the first element that contains the character n. Which statement will accomplish this?
-"문자 n을 포함하는 첫 번째 요소를 검사하고 싶습니다. 어떤 명령문(Statement)이 이를 수행할 수 있을까요?"
 
-선택한 오답: B) fruits.stream().filter(f -> f.contains("n")).forEachOrdered(System.out::print);
-정답: C) Optional<String> result = fruits.stream().filter(f->f.contains("n")).findFirst();
+선택한 오답: D) /app/./sys/log
+			 /server/exe/readme
+정답: C) /app/./sys/log
+		/readme
 
-이유: 문제는 n을 포함하는 첫 번째 요소만을 검사한다고 했습니다. 오답의 경우는 forEachOrdered를 하므로 전체를 검사합니다.
-C의 경우는 findFirst를 통해서 첫 번째 요소만을 검사하므로 C가 정답입니다.
+이유: resolve 메소드는 경로가아닌 단순 문자가 들어올경우 뒷 경로에 붙이는 역할을 한다고합니다.
+하지만 /readme/ 이런식으로 경로로시작하게된다면 기존 경로를 무시하고 입력된 경로로 재설정한다고합니다.
 */

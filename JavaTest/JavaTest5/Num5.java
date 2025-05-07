@@ -1,18 +1,26 @@
 package JavaTest5;
 
+public class Foo<K, V>{
+	private K key;
+	private V value;
+	
+	public Foo(K key, V value) {this.key = key; this.value = value;}
+	public static <T> Foo<T, T> twice(T value) { return new Foo<T, T>(value, value);}
+	public K getKey() { return key; }
+	public V getValue() {return value;}
+}
+
 public class Num5 {
-	public static void main(String[] args) {
-		
-	}
+	public static void main(String[] args) {}
 }
 
 /*
-You want to examine the first element that contains the character n. Which statement will accomplish this?
-"문자 n을 포함하는 첫 번째 요소를 검사하고 싶습니다. 어떤 명령문(Statement)이 이를 수행할 수 있을까요?"
+Which option fails?
+어떤 옵션이 실패하나요?
 
-선택한 오답: B) fruits.stream().filter(f -> f.contains("n")).forEachOrdered(System.out::print);
-정답: C) Optional<String> result = fruits.stream().filter(f->f.contains("n")).findFirst();
+선택한 오답: B) Foo<String, String> pair = Foo.<String>twice("Hello World!");
+정답: C) Foo<Object, Object> percentage = new Foo<String, Integer>("Steve", 100);
 
-이유: 문제는 n을 포함하는 첫 번째 요소만을 검사한다고 했습니다. 오답의 경우는 forEachOrdered를 하므로 전체를 검사합니다.
-C의 경우는 findFirst를 통해서 첫 번째 요소만을 검사하므로 C가 정답입니다.
+이유: 제네릭 파라미터의 경우는 타입이 서로 완전히 일치해야 한다고합니다. 그래서 String Integer가 Object의 자식이지만, 제네릭의경우는
+오류가 발생한다고합니다.
 */
