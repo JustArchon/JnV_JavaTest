@@ -20,7 +20,7 @@ public class Num50 {
 
 /*
 
-선택한 오답: A) 컴파일에러가 난다 이유는 try에 catch나 finally 블록이 없기때문이다.
+선택한 오답: C) 컴파일에러가 난다 이유는 try에 catch나 finally 블록이 없기때문이다.
 정답: B) 100
 
 이유: try블록이 단순 try {}블록이 아닌 try-with-resources인 try ()형식의 블록이었으며,
