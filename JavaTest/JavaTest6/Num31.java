@@ -1,5 +1,24 @@
 package JavaTest6;
 
+public final class IceCream{
+	public void prepare() {}
+}
+
+public class Cake {
+	public final void bake(int min, int temp) {}
+	public void mix() {}
+}
+
+public class Shop {
+	private Cake c = new Cake();
+	private final double discount = 0.25;
+	public void makeReady() { c.bake(10, 120);
+}
+	
+public class Bread extends Cake {
+	public void bake(int minutes, int temprature) {}
+	public void addTopping() {}
+}
 
 public class Num31 {
 	public static void main(String[] args) {
@@ -8,9 +27,8 @@ public class Num31 {
 
 /*
 
-선택한 오답: B) d b e z j
-정답: C) j z e b d
+선택한 오답: B) cake 클래스가 컴파일오류가 뜬다.
+정답: D) Bread 클래스가 컴파일 오류가뜬다.
 
-이유: Comparator<Integer> 선언 과정에서 return o2.compareTo(o1); 를 작성했고, 이는 내림차순 정렬을 의미합니다.
-그러므로 C가 정답입니다.
+이유: Cake의 final method는 오버라이드가 될 수 없다고 합니다.
 */
