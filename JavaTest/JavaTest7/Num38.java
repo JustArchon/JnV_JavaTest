@@ -1,31 +1,35 @@
 package JavaTest7;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class Num38 {
 	public static void main(String[] args) {
-		
+		Locale currentLocale;
+		// line 1
+		ResourceBundle messages = ResourceBundle.getBundle("MessageBundle", currentLocale);
+		System.out.println(message.getString("inquiry"));
 	}
 }
 
 /*
-문제: You want to create a singleton class by using the Singleton design pattern. Which two statements enforce the singleton nature of the design?
-싱글톤(Singleton) 디자인 패턴을 사용하여 싱글톤 클래스를 만들고자 합니다. 싱글톤의 특성을 보장하기 위해 필요한 두 가지 조건은 무엇인가요? (2개 선택)
-2개선택
+MessageBundle.properties
+inquiry = How are you?
 
-A) Make the class static
-클래스를 static으로 만든다.
-B) Make the constructor private.
-생성자를 private으로 만든다.
-C) Override equals() and hashCode() methods of the java.lang.Object.class.
-java.lang.Object 클래스의 equals()와 hashCode() 메서드를 오버라이드한다.
-D) Use a static reference to point to the single instance.
-단일 인스턴스를 가리키는 static 참조변수를 사용한다.
-E) Impelment the Serializable interface.
-Serializable 인터페이스를 구현한다.
+MessageBundle_de_DE.properties file:
+inquiry = Wie geht's?
 
-선택한 오답: A) Make the class static, B) Make the constructor private.
-정답: B) Make the constructor private, D) Use a static reference to point to the single instance.
 
-이유: A가 틀린 이유는 class 자체는 static을 넣을수 없다고합니다. inner class를 제외하고는 불가능하다고 합니다.
-D가 정답인 이유는 static 참조 변수에 객체를 대입하면 실행 시 단 한번만 실행되며 그 이후에 그 객체를 통해서 단 하나의 객체만 전달되기때문입니다.
+문제: 2개의 코드 블럭 중 라인1에 삽입했을시 "Wie geht's?"를 프린트할 코드는?
+
+선택한 오답: A) currentLocale = new Locale("de", "DE");
+		  D) currentLocale = new Locale();
+		  	 currentLocale.setLanguage("de");
+		  	 currentLocale.setRegion("DE");
+정답: A) currentLocale = new Locale("de", "DE");
+	 B) currentLocale = new Locale.Builder().setLanguage("de").setRegion("DE").build()
+
+이유: Locale의 경우는 불변이며, setLanguage, setRegion이 존재하지 않는다고합니다.
+그러므로 new Locale을 생성하면서 언어를 설정해야한다고합니다. 또한 기본적은 ("","")방식외에 Builder패턴을 통해서도 이전의 언어, 국가에대해서 set을통해서 설정할수있다고합니다.
 
 */
