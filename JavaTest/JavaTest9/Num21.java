@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Num19 {
+public class Num21 {
 	public static void main(String[] args) {
 		try {
 		Connection conn = DriverManager.getConnection(dbURL, username, password);

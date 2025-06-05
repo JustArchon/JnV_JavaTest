@@ -1,32 +1,29 @@
 package JavaTest9;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
-
 public class Num13 {
-	Connection conn = DriverManager.getConnection(dbURL, username, password);
-	public static Connection getConnection() throws SQLException {
-		try(Connection conn = DriverManager.getConnection(url, username, password)){
-			newConnection = conn;
+	private int sum;
+	public int compute() {
+		int x = 0;
+		while(x<3) {
+			sum += x++;
 		}
+		return sum;
 	}
 	public static void main(String[] args) {
-		getConnection();
-		Statement stmt = newConnection.createStatement();
-		stmt.executeUpdate("INSERT INTO sutdent VALUES (102, 'Kelvin')");
+		Num13 t = new Num13();
+		int sum = t.compute();
+		sum = t.compute();
+		t.compute();
+		System.out.println(sum);
 	}
 }
 
 /*
 
-선택한 오답: A) 프로그램에서 쿼리 실행이 성공되며 student에 대해서 첫번째 레코드가 업데이트된다.
-정답: C) SQL 예외오류가난다.
+선택한 오답: D) 6
+정답: C) 3
+실제 정답?: D) 6
 
-이유: try with resource에 의한 에러이며, try with resource의 영역인 ()를 나갈경우 자동으로 close된다고합니다.
-그래서 이미 작동된 후에는 이미 conn은 닫힌 객체이며, 이때문에 결국 sql예외 에러가발생합니다.
+이유: t를 생성 후 int sum 생성에 private int sum에 3이 더해집니다. 그리고 새로생성된 sum에 3이 대입되고 그이후 다시 기존 sum에대해서 3이추가적으로 대입됩니다.
+그래서 6이되며 최종적으로 표시되는 지역변수 sum은 6이라고 합니다.
 */

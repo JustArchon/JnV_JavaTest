@@ -1,22 +1,35 @@
 package JavaTest9;
 
-public class Num6 {}
+public class Num6 {
+	public static void main(String[] args) {
+		StringBuilder txt1 = new StringBuilder("PPQRRRSTT");
+		int i = 0;
+		a:
+		while (i < txt1.length()) {
+			char x = txt1.charAt(i);
+			int j = 0;
+			i++;
+			b:
+			while(j < txt1.length()) {
+				char y = txt1.charAt(j);
+				if(i !=  j && y == x) {
+					txt1.deleteCharAt(j);
+					// line 1
+				}
+				j++;
+			}
+		}
+		System.out.println(txt1);
+	}
+}
 
 /*
-문제: Which statement is true about the single abstract method of the java.util.function.Function interface?
-java.util.function.Function 인터페이스의 단일 추상 메서드에 대해 옳은 설명은 무엇인가?
+문제: 라인 1에 무얼넣으면 PRRT가 나오는건가요?
 
-A) It accepts one argument and return void (Consumer)
-B) It accepts one argument and return boolean (Predicate)
-C) It accepts one argument and always produces a result of the same type as argument
-하나의 인자를 받아들이고 항상 인자와 같은 타입의 결과를 반환한다
-D) It accepts one argument and produces a result of any data type.
-하나의 인자를 받아들이고 임의의 데이터 타입의 결과를 반환한다
+선택한 오답: A) a-;
+정답: C) break b, E) continue a;
 
-선택한 오답: C) It accepts one argument and always produces a result of the same type as argument
-정답: D) It accepts one argument and produces a result of any data type.
-
-이유: A는 컨슈머, B는 Predicate 의 설명이며
-Function은 <T, R>이며, 입력 과 출력이 같을수도있고 다를수도 있다고합니다.
-
+이유: 문자를 하나만남기고 모두 지우라는 작업이라고 합니다, 처음에 i가 순회하면서 P를 먼저 체킹하기 시작합니다. 처음에 P는 패스되고 다음 P가 삭제된 후 break b로 j의 순회를
+멈추고 다시 i부터 순회하거나 a라인의 모든 작업을 다시시작시키는 continue a를 통해서 P를 하나만남기고, Q, R, T 전부를 모두 중복을 제거하는 방향으로 가는게
+정답이라고 합니다. 또한 Q,S는 중복으로 삭제되지 않는 점에서는 글자를 삭제하면서 index가 점프하게되면서 중복삭제된 P, RR (RRR -R) T 이런식으로 남게된다고합니다.
 */
