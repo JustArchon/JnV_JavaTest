@@ -1,35 +1,26 @@
 package JavaTest9;
 
-import java.util.Optional;
+import java.time.LocalDate;
 
 public class Num27 {
-	public static Optional<String> getCountry(String loc){
-		Optional<String> countryName = Optional.empty();
-		if ("Paris".equals(loc))
-			countryName = Optional.of("France");
-		else if ("Mumbai".equals(loc))
-			countryName = Optional.of("India");
-		return countryName;
-	}
 	
 	public static void main(String[] args) {
-		Optional<String> city1 = getCountry("Paris");
-		Optional<String> city2 = getCountry("Las Vegas");
-		System.out.println(city1.orElse("Not found"));
-		if (city2.isPresent())
-			city2.ifPresent(x -> System.out.println(x));
-		else
-			System.out.println(city2.orElse("Not found"));
+		LocalDate d1 = LocalDate.now();
+		d1.plusDays(1);
+		d1 = d1.minusMonths(2);
+		LocalDate d2 = d1.plusWeeks(3);
+		d2.minusDays(4);
+		d2 = null;
 	}
 }
 
 /*
+How many LocalDate objects are created in this example?
+아래 코드에서 LocalDate 객체는 총 몇 개가 생성되는가?
 
-선택한 오답: C) Optional[France]
-			 Not found
-정답: D) France
-		Not found
+선택한 오답: A) 2
+정답: D) 5
 
-이유: println에서 단순히 city1을 print했으면 Optional[France]가 맞지만, orElse를 통해서 내부 값을 확인한다고합니다.
-그래서 Optional이아닌 France가 나옵니다.
+이유: 단순한 객체가 얼마나 생성되었냐? 를 묻는 문제이며, LocalDate.now(), d1.plusDays(1), d1.minusMonths(2), d1.plusWeeks(3), d2.minusDays(4);
+이렇게 내부메소드를 호출해서 새로운 날짜객체가 생성되는 모든경우를 세서 5번이라고 합니다. 즉 D가 정답입니다.
 */

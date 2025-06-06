@@ -1,31 +1,27 @@
 package JavaTest9;
 
-class Engine {
-	double fuelLevel;
-	Engine(int fuelLevel) { this.fuelLevel = fuelLevel;}
-	public void start() {
-		//line n1
-		System.out.println("Startd");
-	}
-	public void stop() { System.out.println("Stopped"); }
-}
 
 public class Num24 {
+	
+	public static String convert(int x) {
+		if(x % 15 == 0) return "FizzBuzz";
+		else if (x % 3 == 0)  return "Fizz";
+		else if (x % 5 == 0) return "Buzz";
+		else return Integer.toString(x);
+	}
+	
 	public static void main(String[] args) {
+		for (int i = 1; i < 101; i++) {
+			System.out.println(convert(i));
+		}
 	}
 }
 
 /*
-당신은 이러한 요구사항을 받았다
-fuelLevel of Engine must be greater than zero when the start() method is invoked.
-start() 메서드가 호출될 때 Engine의 fuelLevel은 0보다 커야 한다.
-The code must terminate if fuelLevel of Engine is less than or equal to zero.
-만약 fuelLevel이 0 이하라면 코드는 종료되어야 한다.
 
-선택한 오답: C) assert fuelLevel < 0: System.exit(0)
-정답: D) assert fuelLevel > 0: "Impossible fuel"
+선택한 오답: D) IntStream.range(1, 100).mapToObj(FizzBuzz::convert).forEach(System.out::println);
+정답: C)IntStream.rangeClosed(1, 100).mapToObj(FizzBuzz::convert).forEach(System.out::println);
 
-이유: 자바에서 assert문의 역할은 자신의 조건이 false일 경우 assert에러가 발생하면서 자바프로그램을 종료시키는 역할이라고합니다.
-이에따라서 assert는 자신이 true여야 하는 조건을 넣어야 정상작동하며, 예외가발생하는 조건을 넣어야 하는역할이므로
-D가 정답입니다.
+이유: range의 경우는 1, 99, 즉 마지막 값에서 -1이 된 값이 나온다고 합니다. 즉, 미만의 값을 반환하고
+rangeClosed의 경우는 이하 1, 100 의 값을 반환한다고 합니다. 그러므로 C가 정답입니다.
 */

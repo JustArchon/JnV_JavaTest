@@ -1,35 +1,26 @@
 package JavaTest9;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 
 public class Num21 {
 	public static void main(String[] args) {
-		try {
-		Connection conn = DriverManager.getConnection(dbURL, username, password);
-		Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-		stmt.execute("SELECT * FROM EMPLOYEE");
-		ResultSet rs = stmt.getResultSet();
-		while(rs.next()) {
-			if (rs.getInt(1) == 112) {
-				rs.updateString(2,  "Jack");
-				}
-			}
-		rs.absolute(2);
-		System.out.println(rs.getInt(1) + " " + rs.getString(2));
-		} catch (SQLException e) {
-			System.out.println("Exception is rasied");
+		var numbers = List.of(1,2,3,4,5,6,7,8,9,10);
+		// line 1
+		StringBuilder sb = new StringBuilder();
+		for (int a : numbers) {
+			sb.append(f.apply(a));
+			sb.append(" ");
 		}
+		System.out.println(sb.toString());
 	}
 }
 
 /*
 
-선택한 오답: B) The Employee table is updated with the row : 112 Jack and the program prints: 112 Jack
-정답: C) The Employee table is not updated and the program prints: 112 Jerry
+선택한 오답: B) Function<Integer> f = n -> n * 2;
+정답: A) Function<Integer, Integer> f = n -> n * 2;
 
-이유: sql update이 실행되기 위해서는 updateString등을 통해서 값 변경을 한 후, updateRow()를 실행시켜서 열을 업데이트해야 적용된다고합니다.
+이유: Function은 <T, R> 2개의 인자를 사용한다고합니다. 입력, 출력의 타입을 어떤것으로 지정할 것이냐이며, 여기서 틀린점은
+출력인자를 정하지 않았단 것이며, B가 정답이아닌 A가 정답이라고 합니다. 또한 원시타입인 int 또한 정답이아니며
+클래스 타입인 Integer를 사용해야한다고 합니다.
 */
