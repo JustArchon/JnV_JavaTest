@@ -1,22 +1,39 @@
 package JavaTest9;
 
-import java.util.Locale;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.time.LocalDateTime;
 
-public class Num41 {	
+// num41
+
+public class SerializedMessage {	
+	String message;
+	LocalDateTime createdTime;
+	transient LocalDateTime updatedDateTime;
+	SerializedMessage(String message){
+		this.message = message;
+		this.createdTime = LocalDateTime.now();
+	}
+	private void readObject(ObjectInputStream in) {
+		try {
+			in.defaultReadObject();
+			this.updatedDateTime = LocalDateTime.now();
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
-		Locale loacle = Locale.US;
-		// line 1
-		double currency = 1_00.00;
-		System.out.println(formatter.format(currency));
 	}
 }
 
 /*
-당신은 currency가 $100.00 으로 뜨길원한다 line 1에 뭐가들어가야하는가?
+언제 readObject 메소드가 콜 되나요?
 
-선택한 오답: C) NumberFormat formatter = NumberFormat.getInstance(locale);
-정답: D) NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+선택한 오답: C) before this obejct is serialized
+정답: B) after this object is deserialized
 
-이유: Numberformat에서 get에따라서 어떤것이 붙을지가 정해진다고합니다. 오답으로 고른 getInstance는 일반 숫자를 반환하므로 $가 붙지않으며,
-getCurrencyInstance를 불러와야 통화형식이 붙으면서 $가 붙어서 나온다고합니다.
+이유: 이 문제는 네트워크를 통한 데이터를 전송하기위해서 직렬화를 하기위해서 어떤 메소드가 호출되냐를 묻는 문제입니다.
+이에, readObject는 역직렬화, 즉 직렬화된 데이터를 object로 복원후 읽을때 호출되는것이 정답이라고합니다.
+오답으로 선택한 직렬화때는 writeObject를 쓴다고합니다.
 */
