@@ -1,6 +1,5 @@
 package JavaTest9;
 
-
 public class Num1 {
 	enum Machine {
 		AUTO("Truck"), MEDICAL("Scanner");
