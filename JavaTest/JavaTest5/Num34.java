@@ -24,10 +24,10 @@ public class Num34 {
 }
 
 /*
-java -ea RateOfInterest
 
-선택한 오답: C) No interest for this account
-정답: A) Rate of interest: 0;
+선택한 오답: A) 10123: Ford
+			 10124: BMW
+정답: D) Class 예외가발생한다.
 
 이유: Treeset은 정렬기준을 정의해야한다고합니다. 하지만 어디에도 내부에대해서 정의하지않았으며, println시 정렬을해야하는데 정렬기준이없어서
 println시 classcast예외가 발생한다고합니다.
